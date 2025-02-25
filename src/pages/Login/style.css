@@ -1,0 +1,27 @@
+.login {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+
+  .login-btn {
+    padding: 1rem;
+    aspect-ratio: 4;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border-radius: 1rem;
+    border: solid var(--color-dun) 1px;
+    transition: all;
+    transition-duration: 100;
+
+    &:hover {
+      background-color: var(--color-dun);
+      color: var(--color-red);
+    }
+
+    &:active {
+      background-color: var(--color-dun);
+      color: var(--color-red);
+      scale: 0.95;
+    }
+  }
+}
