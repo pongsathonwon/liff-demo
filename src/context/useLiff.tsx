@@ -12,6 +12,8 @@ export type TLiffContext = {
   ready: boolean;
   error: string | null;
   userId: string | null;
+  pictureUrl: string | null;
+  displayName: string | null;
   login: () => void;
   logout: () => void;
 };
@@ -29,6 +31,8 @@ export const LiffContextProvider = ({ children }: PropsWithChildren) => {
   const [error, setError] = useState<string | null>(null);
   const [loginStatus, setLoginStatus] = useState<boolean>(false);
   const [userId, setUserId] = useState<string | null>(null);
+  const [pictureUrl, setPictureUrl] = useState<string | null>(null);
+  const [displayName, setDisplayName] = useState<string | null>(null);
   const init = async () => {
     await liff.init(
       { liffId: import.meta.env.VITE_LIFF_ID },
@@ -44,8 +48,10 @@ export const LiffContextProvider = ({ children }: PropsWithChildren) => {
   const login = async () => {
     if (liff.isLoggedIn()) {
       setLoginStatus(true);
-      const { userId } = await liff.getProfile();
-      setUserId(userId);
+      const profile = await liff.getProfile();
+      setUserId(profile.userId);
+      setPictureUrl(profile?.pictureUrl ?? null);
+      setDisplayName(profile.displayName);
       return;
     }
     liff.login();
@@ -67,7 +73,9 @@ export const LiffContextProvider = ({ children }: PropsWithChildren) => {
   }, [ready]);
 
   return (
-    <LiffContext.Provider value={{ ready, error, userId, login, logout }}>
+    <LiffContext.Provider
+      value={{ ready, error, userId, displayName, pictureUrl, login, logout }}
+    >
       {children}
     </LiffContext.Provider>
   );

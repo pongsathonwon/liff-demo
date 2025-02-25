@@ -18,18 +18,21 @@ const iconList: TIconList[] = [
 ] as const;
 
 export function Home() {
-  const { profile } = useLiff();
+  const { userId, pictureUrl, displayName } = useLiff();
 
   return (
     <div className="home">
-      {profile && (
+      {userId && (
         <div className="profile">
           <img
             className="profile-image"
-            src={profile?.pictureUrl}
+            src={
+              pictureUrl ??
+              "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
+            }
             alt="line profile"
           />
-          <h2>{profile.displayName}</h2>
+          <h2>{displayName}</h2>
         </div>
       )}
       <div className="menu">
