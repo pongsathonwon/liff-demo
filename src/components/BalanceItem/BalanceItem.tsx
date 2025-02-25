@@ -24,7 +24,11 @@ export function BalanceItem({
         <span>{amount.toFixed(2) + " "}บาท</span>
       </div>
       <div className="row">
-        <Link className="edit" to={{ pathname: `balance/${id}` }}>
+        <Link
+          className="edit"
+          state={{ id, date, desc, amount }}
+          to={{ pathname: `balance/${id}` }}
+        >
           แก้ไข
         </Link>
       </div>

@@ -6,15 +6,32 @@ import {
   CreateBalLayout,
   EditBalLayout,
 } from "../Layout/BalanceLayout/BalanceLayout";
+import { useBalncedb } from "../../hooks";
+import { useLiff } from "../../useLiff";
+import { useLocation, useNavigate } from "react-router";
 function BalanceData() {
-  const [data, setData] = useState<TBalanceFormData>({
-    desc: "",
-    amount: 0,
-    type: "spend",
-  });
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const { state } = useLocation();
+  const init =
+    state ??
+    ({
+      desc: "",
+      amount: 0,
+      type: "spend",
+    } as TBalanceFormData);
+  const [data, setData] = useState<TBalanceFormData>(init);
+  const { userId } = useLiff();
+  const { addBalance } = useBalncedb(userId);
+  const navigate = useNavigate();
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(data);
+    try {
+      await addBalance({ ...data, amount: Number(data.amount) });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      navigate("/");
+    }
   };
   return (
     <BalanceForm

@@ -6,6 +6,8 @@ import { getDateObject, getFormattedDate, withAuth } from "../../utils";
 import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { useBalncedb } from "../../hooks";
+import { useLiff } from "../../useLiff";
 
 const mockBalance: TBalance[] = [
   { id: 1, desc: "plantnery", amount: 499, date: "2024-01-12", type: "spend" },
@@ -44,8 +46,9 @@ const sumBalance = (prev: number, cur: TBalance) =>
   cur.type === "spend" ? prev - cur.amount : prev + cur.amount;
 
 export function Balance() {
-  const [bal, setBal] = useState<TBalance[]>(mockBalance);
-  const sum = bal.reduce(sumBalance, 0);
+  const { userId } = useLiff();
+  const { lst } = useBalncedb(userId);
+  const sum = lst.reduce(sumBalance, 0);
   return (
     <section className="balance">
       <h2 className="balance-header">รายละเอียดการใช้จ่าย</h2>

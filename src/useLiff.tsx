@@ -6,11 +6,11 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { TProfile } from "./types";
 
 export type TLiffContext = {
   ready: boolean;
   error: string | null;
+  userId: string | null;
   login: () => void;
   logout: () => void;
 };
@@ -33,6 +33,7 @@ export const LiffContextProvider = ({ children }: PropsWithChildren) => {
   const [ready, setReady] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [loginStatus, setLoginStatus] = useState<boolean>(false);
+  const [userId, setUserId] = useState<string | null>(null);
   const init = async () => {
     await liff.init(
       { liffId: import.meta.env.VITE_LIFF_ID },
@@ -45,9 +46,11 @@ export const LiffContextProvider = ({ children }: PropsWithChildren) => {
       }
     );
   };
-  const login = () => {
+  const login = async () => {
     if (liff.isLoggedIn()) {
       setLoginStatus(true);
+      const { userId } = await liff.getProfile();
+      setUserId(userId);
       return;
     }
     liff.login();
@@ -69,7 +72,7 @@ export const LiffContextProvider = ({ children }: PropsWithChildren) => {
   }, [ready]);
 
   return (
-    <LiffContext.Provider value={{ ready, error, login, logout }}>
+    <LiffContext.Provider value={{ ready, error, userId, login, logout }}>
       {children}
     </LiffContext.Provider>
   );

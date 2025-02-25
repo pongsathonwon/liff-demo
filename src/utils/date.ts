@@ -9,6 +9,10 @@ export const getDateObject = (isodate?: string) => {
     return { day, month, year };
 };
 
+export const getToday = () => new Date().toISOString().split('T')[0]
+
+export const getFDOM = () => getFormattedDate({ ...getDateObject(), day: 1 })
+
 export const getFormattedDate = ({ day, month, year }: TDate) => String(year).padStart(4, '0') + "-" + String(month).padStart(2, '0') + "-" + String(day).padStart(2, '0')
 
 const getTotalDay = (month: number, year: number) => {

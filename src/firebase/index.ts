@@ -18,4 +18,4 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const rtdb = getDatabase(app);
+export const rtdb = getDatabase(app, import.meta.env.VITE_FIRESTORE_DB_URL);
