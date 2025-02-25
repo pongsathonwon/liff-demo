@@ -5,4 +5,10 @@ export type TProfile = {
     statusMessage?: string;
 }
 
-export type TDate = { day: number; month: number; year: number };
+export type TDate = { day: number | `${number}`; month: number | `${number}`; year: number | `${number}` };
+
+export interface IWithId {
+    id: string | number
+}
+export type TSpent = 'spend' | 'pay' | 'sum'
+export type TBalance = { desc: string; date: string; amount: number, type: TSpent } & IWithId;

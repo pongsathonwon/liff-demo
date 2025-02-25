@@ -1,2 +1,2 @@
 export { withAuth } from "./WithAuth"
-export { getDateList, getMonthList, getNumberList } from "./date"
+export { getDateObject, getFormattedDate, getDateList, getMonthList, getNumberList } from "./date"

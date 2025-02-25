@@ -46,7 +46,10 @@ export const LiffContextProvider = ({ children }: PropsWithChildren) => {
     );
   };
   const login = () => {
-    if (loginStatus) return;
+    if (liff.isLoggedIn()) {
+      setLoginStatus(true);
+      return;
+    }
     liff.login();
   };
 
@@ -60,6 +63,10 @@ export const LiffContextProvider = ({ children }: PropsWithChildren) => {
     init();
   }, []);
   // check login state
+  useEffect(() => {
+    if (!ready) return;
+    login();
+  }, [ready]);
 
   return (
     <LiffContext.Provider value={{ ready, error, login, logout }}>

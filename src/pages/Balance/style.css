@@ -1,0 +1,24 @@
+.balance {
+  flex: 1 1 auto;
+  .balance-header {
+    margin-bottom: 0.5rem;
+    border-bottom: solid 1px var(--color-dun);
+    border-top: solid 1px var(--color-dun);
+    border-radius: 0 0 1rem 1rem;
+    padding: 1rem;
+  }
+
+  .add {
+    position: fixed;
+    right: 1rem;
+    bottom: 2rem;
+    width: 4rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: solid 1px var(--color-dun);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+}
