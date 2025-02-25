@@ -14,3 +14,15 @@ export function withTemplate(Layout: ComponentType<PropsWithChildren>) {
   }
   return WithLayout;
 }
+
+export function partialApply<T extends {}>(
+  Comp: ComponentType<T & PropsWithChildren>
+) {
+  function CompWithoutChildren(partialProps: T) {
+    return ({ children }: PropsWithChildren) => (
+      <Comp {...partialProps}>{children}</Comp>
+    );
+  }
+
+  return CompWithoutChildren;
+}

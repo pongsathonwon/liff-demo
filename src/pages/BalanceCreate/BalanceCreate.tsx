@@ -1,5 +1,4 @@
 import { FormEvent, useState } from "react";
-import "./style.css";
 import { BalanceForm } from "../../components";
 import { TBalanceFormData } from "../../types";
 import { withTemplate } from "../../utils/WithTemplate";

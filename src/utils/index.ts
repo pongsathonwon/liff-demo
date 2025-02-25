@@ -1,4 +1,3 @@
 export { withAuth } from "./WithAuth"
-export { partialApply } from "./PartialApply"
-export { withTemplate } from "./WithTemplate"
+export { withTemplate, partialApply } from "./WithTemplate"
 export { getDateObject, getFormattedDate, getDateList, getMonthList, getNumberList } from "./date"
