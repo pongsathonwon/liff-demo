@@ -3,8 +3,6 @@ import { TBalance } from "../../types";
 import { BalanceItem } from "../../components";
 import { withAuth } from "../../utils";
 import { Link } from "react-router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useRtdb } from "../../context";
 
 const mockBalance: TBalance[] = [
@@ -63,7 +61,7 @@ export function Balance() {
         <span>{sum.toFixed(2)} บาท</span>
       </div>
       <Link to={{ pathname: "balance" }} className="add">
-        <FontAwesomeIcon icon={faPlus} size="2x" />
+        เพิ่ม
       </Link>
       <div style={{ marginTop: "6rem" }}></div>
     </section>
