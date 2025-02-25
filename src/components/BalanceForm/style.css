@@ -1,0 +1,23 @@
+.balance-btn-wrapper {
+  display: flex;
+  justify-content: end;
+  gap: 2rem;
+  padding: 1rem;
+}
+.balance-form {
+  .btn-submit {
+    padding: 0.5rem 1rem;
+    border: solid 1px var(--color-dun);
+    border-radius: 1rem;
+    font-size: 1.5rem;
+  }
+}
+
+a.back {
+  padding: 0.5rem 1rem;
+  border: non;
+  background-color: var(--color-dun);
+  color: var(--color-red);
+  border-radius: 1rem;
+  font-size: 1.5rem;
+}

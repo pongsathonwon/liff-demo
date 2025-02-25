@@ -3,7 +3,7 @@
   .balance-header {
     margin-bottom: 0.5rem;
     /* border-bottom: solid 1px var(--color-dun);
-    border-top: solid 1px var(--color-dun); */
+      border-top: solid 1px var(--color-dun); */
     border-radius: 0 0 1rem 1rem;
     padding: 1rem;
     color: var(--color-red);

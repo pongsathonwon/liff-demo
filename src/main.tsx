@@ -4,13 +4,11 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import { LiffContextProvider } from "./useLiff";
 import {
   Balance,
-  BalanceWithAuth,
-  Home,
+  BalanceEdit,
+  CreateBalance,
+  EditBalance,
   Layout,
-  Login,
-  Profile,
 } from "./pages";
-import { BalanceForm } from "./components";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -18,10 +16,9 @@ createRoot(document.getElementById("root")!).render(
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
-            {/* <Route path="/" element={<Login />} />
-            <Route path="/balance" element={<Balance />} /> */}
             <Route path="/" element={<Balance />} />
-            <Route path="/balance" element={<BalanceForm />} />
+            <Route path="/balance" element={<CreateBalance />} />
+            <Route path="/balance/:id" element={<EditBalance />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,13 +1,12 @@
 import "./style.css";
-import { Link, Outlet } from "react-router";
-import { usePath } from "../../hooks";
+import { Outlet } from "react-router";
 
 export function Layout() {
   return (
     <div className="layout">
-      <header>
+      {/* <header>
         <h1 className="title">บันทึกยอดใช้จ่าย</h1>
-      </header>
+      </header> */}
       <Outlet />
       <footer className="footer">@copyright 2025</footer>
     </div>

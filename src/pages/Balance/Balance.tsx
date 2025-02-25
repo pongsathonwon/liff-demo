@@ -40,22 +40,12 @@ const mockBalance: TBalance[] = [
 const getNetAmount = ({ type, amount }: TBalance) =>
   type === "spend" ? -amount : amount;
 
-const sumBalance = (prev: TBalance, cur: TBalance) => ({
-  ...prev,
-  amount: prev.amount + getNetAmount(cur),
-});
-
-const defaultBalance: TBalance = {
-  id: "none",
-  desc: "ยอดรวม",
-  amount: 0,
-  type: "sum",
-  date: getFormattedDate(getDateObject()),
-};
+const sumBalance = (prev: number, cur: TBalance) =>
+  cur.type === "spend" ? prev - cur.amount : prev + cur.amount;
 
 export function Balance() {
   const [bal, setBal] = useState<TBalance[]>(mockBalance);
-  const sum = bal.reduce(sumBalance, defaultBalance);
+  const sum = bal.reduce(sumBalance, 0);
   return (
     <section className="balance">
       <h2 className="balance-header">รายละเอียดการใช้จ่าย</h2>
@@ -63,7 +53,19 @@ export function Balance() {
       {mockBalance.map((d) => (
         <BalanceItem {...d} key={d.id} />
       ))}
-      <BalanceItem {...sum} />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          padding: ".5rem 1rem",
+          fontSize: "1.5rem",
+          fontWeight: 600,
+        }}
+      >
+        <span>ยอด</span>
+        <span>{sum.toFixed(2)} บาท</span>
+      </div>
+      {/* <BalanceItem {...sum} /> */}
       <Link to={{ pathname: "balance" }} className="add">
         <FontAwesomeIcon icon={faPlus} size="2x" />
       </Link>
