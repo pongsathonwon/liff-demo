@@ -1,5 +1,5 @@
 import { ComponentType, useEffect } from "react";
-import { useLiff } from "../useLiff";
+import { useLiff } from "../context/useLiff";
 
 export function withAuth<T extends Record<string, unknown>>(
   Comp: ComponentType<T>

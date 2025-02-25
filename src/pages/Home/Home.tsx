@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import { Icon } from "../../components";
-import { useLiff } from "../../useLiff";
+import { useLiff } from "../../context/useLiff";
 import { Link } from "react-router";
 
 type TIconList = {

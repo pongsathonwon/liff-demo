@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import { useLiff } from "../../useLiff";
+import { useLiff } from "../../context/useLiff";
 export function Login() {
   const { login } = useLiff();
   return (

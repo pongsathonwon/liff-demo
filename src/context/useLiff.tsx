@@ -6,6 +6,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
+import { useCustomCtx } from "../utils";
 
 export type TLiffContext = {
   ready: boolean;
@@ -21,13 +22,7 @@ export type TNonNullLiff = {
 
 export const LiffContext = createContext<TLiffContext | null>(null);
 
-export const useLiff = () => {
-  const ctx = useContext(LiffContext);
-  if (!ctx) {
-    throw new Error("no liff provider");
-  }
-  return ctx;
-};
+export const useLiff = useCustomCtx(LiffContext, "liff");
 
 export const LiffContextProvider = ({ children }: PropsWithChildren) => {
   const [ready, setReady] = useState<boolean>(false);

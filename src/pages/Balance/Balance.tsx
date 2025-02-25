@@ -6,8 +6,8 @@ import { getDateObject, getFormattedDate, withAuth } from "../../utils";
 import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { useBalncedb } from "../../hooks";
-import { useLiff } from "../../useLiff";
+import { useLiff } from "../../context/useLiff";
+import { useRtdb } from "../../context";
 
 const mockBalance: TBalance[] = [
   { id: 1, desc: "plantnery", amount: 499, date: "2024-01-12", type: "spend" },
@@ -39,21 +39,17 @@ const mockBalance: TBalance[] = [
   },
 ];
 
-const getNetAmount = ({ type, amount }: TBalance) =>
-  type === "spend" ? -amount : amount;
-
 const sumBalance = (prev: number, cur: TBalance) =>
   cur.type === "spend" ? prev - cur.amount : prev + cur.amount;
 
 export function Balance() {
-  const { userId } = useLiff();
-  const { lst } = useBalncedb(userId);
+  const { lst } = useRtdb();
   const sum = lst.reduce(sumBalance, 0);
   return (
     <section className="balance">
       <h2 className="balance-header">รายละเอียดการใช้จ่าย</h2>
 
-      {mockBalance.map((d) => (
+      {lst.map((d) => (
         <BalanceItem {...d} key={d.id} />
       ))}
       <div
@@ -68,7 +64,6 @@ export function Balance() {
         <span>ยอด</span>
         <span>{sum.toFixed(2)} บาท</span>
       </div>
-      {/* <BalanceItem {...sum} /> */}
       <Link to={{ pathname: "balance" }} className="add">
         <FontAwesomeIcon icon={faPlus} size="2x" />
       </Link>
