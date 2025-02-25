@@ -14,8 +14,5 @@ export function BalanceLayout({ subheader, children }: TBalanceLayoutProps) {
 
 const partialLayout = partialApply(BalanceLayout);
 
-export const CreateBalLayout = partialLayout({
-  subheader: "บันทึกการใช้จ่าย",
-});
-
+export const CreateBalLayout = partialLayout({ subheader: "บันทึกการใช้จ่าย" });
 export const EditBalLayout = partialLayout({ subheader: "แก้ไขการใช้จ่าย" });

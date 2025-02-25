@@ -2,13 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { LiffContextProvider } from "./useLiff";
-import {
-  Balance,
-  BalanceEdit,
-  CreateBalance,
-  EditBalance,
-  Layout,
-} from "./pages";
+import { Balance, CreateBalance, EditBalance, Layout } from "./pages";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

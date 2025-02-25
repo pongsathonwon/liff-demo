@@ -7,7 +7,7 @@ import {
   CreateBalLayout,
   EditBalLayout,
 } from "../Layout/BalanceLayout/BalanceLayout";
-function BalanceCreate() {
+function BalanceData() {
   const [data, setData] = useState<TBalanceFormData>({
     desc: "",
     amount: 0,
@@ -28,5 +28,5 @@ function BalanceCreate() {
   );
 }
 
-export const CreateBalance = withTemplate(CreateBalLayout)(BalanceCreate);
-export const EditBalance = withTemplate(EditBalLayout)(BalanceCreate);
+export const CreateBalance = withTemplate(CreateBalLayout)(BalanceData);
+export const EditBalance = withTemplate(EditBalLayout)(BalanceData);
