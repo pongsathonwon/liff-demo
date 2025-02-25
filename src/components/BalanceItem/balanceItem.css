@@ -1,0 +1,27 @@
+.balance-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-bottom: solid 1px var(--color-dun);
+  padding: 0.5rem;
+  border-radius: 0 0 1rem 1rem;
+  font-size: 18px;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    &:last-child {
+      justify-content: end;
+    }
+
+    .edit {
+      padding: 0.25rem 0.5rem;
+      color: var(--color-red);
+      background-color: var(--color-dun);
+      border-radius: 0.25rem;
+    }
+  }
+}

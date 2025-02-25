@@ -1,0 +1,38 @@
+.formfield {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 0.25rem;
+
+  .label {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+  }
+
+  .input {
+    padding: 0.25rem 0.5rem;
+    font-size: 1.5rem;
+    outline: none;
+    border: solid var(--color-dun) 0.5px;
+
+    &::placeholder {
+      color: var(--color-dun);
+      font-size: 1.25rem;
+      font-style: italic;
+    }
+
+    /*&[type="date"] {
+       -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none; 
+      &::-webkit-calendar-picker-indicator {
+      }
+      &::-webkit-datetime-edit-year-field,
+      &::-webkit-datetime-edit-month-field,
+      &::-webkit-datetime-edit-day-field, 
+      &::-webkit-datetime-edit-text {
+      
+    }
+    } */
+  }
+}
