@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import { Icon } from "../../components";
 import { useLiff } from "../../context/useLiff";
 import { Link } from "react-router";
 
@@ -38,7 +37,7 @@ export function Home() {
       <div className="menu">
         {iconList.map(({ label, icon, path }, i) => (
           <Link key={i} to={path}>
-            <Icon label={label} icon={icon} />
+            {label}
           </Link>
         ))}
       </div>
